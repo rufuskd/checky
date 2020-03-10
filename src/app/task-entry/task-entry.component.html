@@ -1,0 +1,21 @@
+<h1>Enter a task</h1>
+<form [formGroup]="taskForm">
+  <div>
+    <label>
+      Task name:
+      <input type="text" formControlName="taskName">
+      <button (click)="taskClick()">Create Task</button>
+    </label>
+  </div>
+
+  <div>
+    <input type="text" formControlName="reqToAdd">
+    <input type="number" formControlName="quantityToAdd">
+    <button (click)="reqClick()">Add Requirement</button>
+  </div>
+  <div *ngFor="let r of requirements">
+    Requiremets so far
+    <input type="text" value={{r.name}}>
+    <input type="number" value={{r.quantity}}>
+  </div>
+</form>
