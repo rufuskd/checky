@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Task, TaskResource } from '../task';
-import { FormGroup, FormControl } from '@angular/forms';
+import { Task, TaskResource } from './task';
+import { FormGroup, FormArray, FormControl } from '@angular/forms';
 
 
 @Component({
@@ -8,13 +8,14 @@ import { FormGroup, FormControl } from '@angular/forms';
   templateUrl: './task-entry.component.html',
   styleUrls: ['./task-entry.component.css']
 })
+
 export class TaskEntryComponent implements OnInit {
 
-  requirements = [];
   taskForm = new FormGroup({
     taskName: new FormControl(''),
     reqToAdd: new FormControl(''),
     quantityToAdd: new FormControl(''),
+    requirements: new FormArray([]),
   });
 
   ngOnInit() {
@@ -23,7 +24,7 @@ export class TaskEntryComponent implements OnInit {
 
   taskClick()
   {
-    console.warn(this.taskForm.value.taskName,this.requirements,this.taskForm.value.reqToAdd);
+    console.warn(this.taskForm.value.taskName,this.taskForm.value.requirements,this.taskForm.value.reqToAdd);
   }
 
   reqClick()
@@ -31,7 +32,17 @@ export class TaskEntryComponent implements OnInit {
     var newItem = {} as TaskResource;
     newItem.name = this.taskForm.value.reqToAdd;
     newItem.quantity = this.taskForm.value.quantityToAdd;
-    this.requirements.push(newItem);
-    console.warn(this.taskForm.value.reqToAdd);
+    (<FormArray>this.taskForm.controls.requirements).push(new RequirementFormGroup(newItem.name,newItem.quantity));
+    console.warn(this.taskForm.value.requirements);
   }
+}
+
+class RequirementFormGroup extends FormGroup {
+  constructor(rn: string, rq: number)
+  {
+    super({reqName: new FormControl(rn),
+            reqQuantity: new FormControl(rq),
+          });
+  }
+
 }

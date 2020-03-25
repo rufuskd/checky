@@ -13,9 +13,9 @@
     <input type="number" formControlName="quantityToAdd">
     <button (click)="reqClick()">Add Requirement</button>
   </div>
-  <div *ngFor="let r of requirements">
-    Requiremets so far
-    <input type="text" value={{r.name}}>
-    <input type="number" value={{r.quantity}}>
+  Requiremets so far
+  <div *ngFor="let req of taskForm.controls.requirements.controls; index as i">
+    <input [formControl]="taskForm.controls.requirements.controls[i].controls.reqName">
+    <input [formControl]="taskForm.controls.requirements.controls[i].controls.reqQuantity">
   </div>
 </form>
