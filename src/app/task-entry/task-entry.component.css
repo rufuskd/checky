@@ -1,0 +1,19 @@
+h1 {
+  color: blue;
+  text-align: center;
+}
+
+#tf{
+  display: grid;
+  grid-column-gap: 10px;
+  grid-row-gap: 10px;
+}
+
+.row{
+  display: flex;
+  align-items: center;
+}
+
+.column{
+  width: flex;
+}

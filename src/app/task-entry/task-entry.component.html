@@ -1,21 +1,20 @@
 <h1>Enter a task</h1>
-<form [formGroup]="taskForm">
-  <div>
-    <label>
-      Task name:
-      <input type="text" formControlName="taskName">
-      <button (click)="taskClick()">Create Task</button>
-    </label>
-  </div>
+<form [formGroup]="taskForm" id="tf">
+    <div id="div1" class="row">
+      <div class="column">Task name:</div>
+      <input type="text" formControlName="taskName" class="column">
+      <button (click)="taskClick()" class="column">Create Task</button>
+    </div>
 
-  <div>
-    <input type="text" formControlName="reqToAdd">
-    <input type="number" formControlName="quantityToAdd">
-    <button (click)="reqClick()">Add Requirement</button>
-  </div>
-  Requiremets so far
-  <div *ngFor="let req of taskForm.controls.requirements.controls; index as i">
-    <input [formControl]="taskForm.controls.requirements.controls[i].controls.reqName">
-    <input [formControl]="taskForm.controls.requirements.controls[i].controls.reqQuantity">
-  </div>
+    <div id="div2" class="row">
+      <div class="column">Requirement to add:</div>
+      <input class="column" type="text" formControlName="reqToAdd">
+      <input class="column" type="number" formControlName="quantityToAdd">
+      <button class="column" (click)="reqClick()">Add Requirement</button>
+    </div>
+    <div class="column">Requiremets so far</div>
+    <div *ngFor="let req of taskForm.controls.requirements.controls; index as i" id="botdiv{{i}}" class="row">
+      <input class="column" [formControl]="taskForm.controls.requirements.controls[i].controls.reqName">
+      <input class="column" [formControl]="taskForm.controls.requirements.controls[i].controls.reqQuantity">
+    </div>
 </form>
