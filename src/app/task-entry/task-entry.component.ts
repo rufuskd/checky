@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Task, TaskResource } from '../task';
+import { Task, TaskResource } from '../classes/task';
 import { FormGroup, FormArray, FormControl } from '@angular/forms';
-
+import { TaskListService } from '../tasklist/tasklist.service';
 
 @Component({
   selector: 'app-task-entry',
@@ -18,7 +18,9 @@ export class TaskEntryComponent implements OnInit {
     requirements: new FormArray([]),
   });
 
-  taskList: Task[] = []
+  constructor(
+    private taskListService: TaskListService
+  ){ }
 
   ngOnInit() {
 
@@ -35,8 +37,8 @@ export class TaskEntryComponent implements OnInit {
       var temp: TaskResource  = { name: (<RequirementFormGroup>t).controls.reqName.value, quantity: (<RequirementFormGroup>t).controls.reqQuantity.value };
       newTask.requirements.push(temp);
     });
-    this.taskList.push(newTask);
-
+    this.taskListService.addToTaskList(newTask);
+    console.warn(this.taskListService.getTasks());
     (<FormArray>this.taskForm.controls.requirements).clear();
     (<FormGroup>this.taskForm).reset();
   }
