@@ -1,0 +1,13 @@
+h1 {
+  color: blue;
+  text-align: center;
+}
+
+.row{
+  display: flex;
+  align-items: center;
+}
+
+.column{
+  width: flex;
+}

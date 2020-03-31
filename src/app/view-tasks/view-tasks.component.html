@@ -2,9 +2,9 @@
 <h1> View Tasks </h1>
 </a>
 <div *ngFor="let t of tasks; index as i" id="botdiv{{i}}" class="row">
-  <li> "{{t.name}}" </li>
-  <div *ngFor="let r of tasks[i]; index as i2" class="column">
-    <li> "{{r.reqName}}" </li>
-    <li> "{{r.reqQuantity}}" </li>
+  <li class="column"> "{{t.name}}" </li>
+  <div *ngFor="let r of t.requirements; index as i2">
+    <li class="column"> "{{r.name}}" </li>
+    <li class="column"> "{{r.quantity}}" </li>
   </div>
 </div>

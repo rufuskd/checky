@@ -15,8 +15,8 @@
       <button class="column" (click)="reqClick()">Add Requirement</button>
     </div>
     <div class="column">Requiremets so far</div>
-    <div *ngFor="let req of taskForm.controls.requirements.controls; index as i" id="botdiv{{i}}" class="row">
-      <input class="column" [formControl]="taskForm.controls.requirements.controls[i].controls.reqName">
-      <input class="column" [formControl]="taskForm.controls.requirements.controls[i].controls.reqQuantity">
+    <div *ngFor="let req of reqPointer.controls; index as i" id="botdiv{{i}}" class="row">
+      <input class="column" [formControl]="req.controls.reqName">
+      <input class="column" [formControl]="req.controls.reqQuantity">
     </div>
 </form>

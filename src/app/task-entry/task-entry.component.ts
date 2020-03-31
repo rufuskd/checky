@@ -11,19 +11,21 @@ import { TaskListService } from '../tasklist/tasklist.service';
 
 export class TaskEntryComponent implements OnInit {
 
-  taskForm = new FormGroup({
+  taskForm: FormGroup = new FormGroup({
     taskName: new FormControl(''),
     reqToAdd: new FormControl(''),
     quantityToAdd: new FormControl(''),
     requirements: new FormArray([]),
   });
 
+  reqPointer: FormArray;
+
   constructor(
     private taskListService: TaskListService
   ){ }
 
   ngOnInit() {
-
+    this.reqPointer = <FormArray>(this.taskForm.controls.requirements);
   }
 
 
