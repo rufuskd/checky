@@ -14,7 +14,7 @@ export class TaskListService {
 
   addToTaskList(t: Task)
   {
-    this.httpClient.request('POST', '10.88.0.102', t.name);
+    this.httpClient.request('POST', '10.88.0.102');
     this.taskList.push(t);
   }
 
