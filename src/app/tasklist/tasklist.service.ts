@@ -14,20 +14,17 @@ export class TaskListService {
 
   addToTaskList(t: Task)
   {
-    this.httpClient.get('localhost:8000');
-    alert("FUCK");
     this.taskList.push(t);
+    this.httpClient.get("10.88.0.102:8000").subscribe();
   }
 
   getTasks()
   {
-    this.httpClient.request('GET', 'localhost:8000');
     return this.taskList;
   }
 
   clearTaskList()
   {
-    this.httpClient.request('DELETE', 'localhost:8000');
     this.taskList.length = 0;
   }
 }
