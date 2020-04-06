@@ -15,7 +15,8 @@ export class TaskListService {
   addToTaskList(t)
   {
     this.taskList.push(t);
-    this.httpClient.get("http://10.88.0.102:8000").subscribe();
+    //this.httpClient.get("http://10.88.0.102:8000").subscribe();
+    this.httpClient.post<any>("http://10.88.0.102:8000", JSON.stringify(t)).subscribe();
   }
 
   getTasks()
