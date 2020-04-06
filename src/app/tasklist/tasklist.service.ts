@@ -18,7 +18,7 @@ export class TaskListService {
     console.warn("ASS!");
     alert("FOOK");
     alert(this.httpClient);
-    //this.httpClient.get("http://10.88.0.102:8000").subscribe();
+    this.httpClient.get("http://10.88.0.102:8000").subscribe();
   }
 
   getTasks()
