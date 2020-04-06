@@ -6,6 +6,7 @@ import { TaskEntryComponent } from './task-entry/task-entry.component';
 import { RouterModule, Routes } from '@angular/router';
 import { ViewTasksComponent } from './view-tasks/view-tasks.component';
 import { SettingsComponent } from './settings/settings.component';
+import { HttpClientModule } from '@angular/common/http';
 
 const appRoutes: Routes = [
   { path: 'create-task', component: TaskEntryComponent },
@@ -24,7 +25,8 @@ const appRoutes: Routes = [
   imports: [
     RouterModule.forRoot( appRoutes ),
     BrowserModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

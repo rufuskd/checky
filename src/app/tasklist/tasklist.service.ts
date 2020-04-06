@@ -14,7 +14,8 @@ export class TaskListService {
 
   addToTaskList(t: Task)
   {
-    this.httpClient.request('POST', 'localhost:8000');
+    this.httpClient.get('localhost:8000');
+    alert("FUCK");
     this.taskList.push(t);
   }
 
