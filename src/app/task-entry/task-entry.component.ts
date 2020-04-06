@@ -40,7 +40,6 @@ export class TaskEntryComponent implements OnInit {
       newTask.requirements.push(temp);
     });
     this.taskListService.addToTaskList(newTask);
-
     (<FormArray>this.taskForm.controls.requirements).clear();
     (<FormGroup>this.taskForm).reset();
   }
