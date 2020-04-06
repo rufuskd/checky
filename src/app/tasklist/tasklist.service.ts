@@ -16,7 +16,7 @@ export class TaskListService {
   {
     this.taskList.push(t);
     //this.httpClient.get("http://10.88.0.102:8000").subscribe();
-    this.httpClient.post<any>("http://10.88.0.101:/submitdata", JSON.stringify(t), {responseType: 'text'}).subscribe();
+    this.httpClient.post<any>("http://10.88.0.101:/submitdata", JSON.stringify(t)).subscribe();
   }
 
   getTasks()
