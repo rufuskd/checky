@@ -14,19 +14,19 @@ export class TaskListService {
 
   addToTaskList(t: Task)
   {
-    this.httpClient.request('POST', '10.88.0.102');
+    this.httpClient.request('POST', '10.88.0.102:8000');
     this.taskList.push(t);
   }
 
   getTasks()
   {
-    this.httpClient.request('GET', '10.88.0.102');
+    this.httpClient.request('GET', '10.88.0.102:8000');
     return this.taskList;
   }
 
   clearTaskList()
   {
-    this.httpClient.request('DELETE', '10.88.0.102');
+    this.httpClient.request('DELETE', '10.88.0.102:8000');
     this.taskList.length = 0;
   }
 }
