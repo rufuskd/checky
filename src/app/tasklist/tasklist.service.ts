@@ -14,14 +14,15 @@ export class TaskListService {
 
   addToTaskList(t)
   {
-    this.taskList.push(t);
+    //this.taskList.push(t);
     //this.httpClient.get("http://10.88.0.102:8000").subscribe();
-    this.httpClient.post<any>("http://10.88.0.101:/submitdata", JSON.stringify(t)).subscribe();
+    return this.httpClient.post<any>("http://10.88.0.101/submitdata", JSON.stringify(t));
   }
 
   getTasks()
   {
-    return this.taskList;
+    return this.httpClient.get<any>("http://10.88.0.101/submitdata");
+    //return this.taskList;
   }
 
   clearTaskList()
