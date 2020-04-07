@@ -21,7 +21,7 @@ export class TaskListService {
 
   getTasks()
   {
-    return this.httpClient.get<any>("http://10.88.0.101/submitdata");
+    return this.httpClient.get<any>("http://10.88.0.101/submitdata", {observe: "response"});
     //return this.taskList;
   }
 
