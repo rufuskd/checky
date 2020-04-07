@@ -16,7 +16,7 @@ export class ViewTasksComponent implements OnInit {
 
   constructor( private taskListService: TaskListService ) {
     this.taskListService.getTasks().subscribe(
-      (data) => this.tasks = (JSON.parse(data.body) as Task[]),
+      (data) => console.alert(data)),
       (error) => console.warn("BALLS")
     );
     //if (this.taskListService.getTasks()[0])
