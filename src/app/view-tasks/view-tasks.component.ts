@@ -12,10 +12,12 @@ import { TaskListService } from '../tasklist/tasklist.service';
 export class ViewTasksComponent implements OnInit {
 
   taskName = new FormControl('');
-  tasks = []
+  tasks = [];
 
   constructor( private taskListService: TaskListService ) {
     this.taskListService.getTasks().subscribe( data => this.tasks = data );
+    console.warn("ASS");
+    console.warn(this.tasks);
     //if (this.taskListService.getTasks()[0])
     //{
     //  this.tasks = this.taskListService.getTasks();
