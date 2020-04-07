@@ -39,7 +39,7 @@ export class TaskEntryComponent implements OnInit {
       var temp: TaskResource  = { name: (<RequirementFormGroup>t).controls.reqName.value, quantity: (<RequirementFormGroup>t).controls.reqQuantity.value };
       newTask.requirements.push(temp);
     });
-    this.taskListService.addToTaskList(newTask).subscribe((result) => console.warn(result));
+    this.taskListService.addToTaskList(newTask).subscribe();
     (<FormArray>this.taskForm.controls.requirements).clear();
     (<FormGroup>this.taskForm).reset();
   }
