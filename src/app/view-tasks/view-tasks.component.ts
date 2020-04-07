@@ -15,7 +15,11 @@ export class ViewTasksComponent implements OnInit {
   tasks = [];
 
   constructor( private taskListService: TaskListService ) {
-    this.taskListService.getTasks().subscribe( data => console.warn(data) );
+    this.taskListService.getTasks().subscribe(
+      (data) => this.tasks = data,
+      (error) => console.warn("BALLS"),
+      () => console.log(this.tasks)
+    );
     console.warn("ASS");
     console.warn(this.tasks);
     //if (this.taskListService.getTasks()[0])
