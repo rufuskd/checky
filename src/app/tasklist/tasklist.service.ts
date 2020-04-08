@@ -16,12 +16,12 @@ export class TaskListService {
   {
     //this.taskList.push(t);
     //this.httpClient.get("http://10.88.0.102:8000").subscribe();
-    return this.httpClient.post<any>("http://nginx/submitdata", JSON.stringify(t));
+    return this.httpClient.post<any>("http://10.88.0.101/submitdata", JSON.stringify(t));
   }
 
   getTasks()
   {
-    return this.httpClient.get<any>("http://nginx/submitdata", {observe: "response"});
+    return this.httpClient.get<any>("http://10.88.0.101/submitdata", {observe: "response"});
     //return this.taskList;
   }
 
