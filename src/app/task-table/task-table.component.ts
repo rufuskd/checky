@@ -20,7 +20,7 @@ import { Task, TaskResource } from '../classes/task';
 })
 export class TaskTableComponent {
   taskArray = [];
-  columnsToDisplay = ['name', 'requirements'];
+  columnsToDisplay = ['name'];
   expandedTask: Task | null;
 
   constructor( private taskListService: TaskListService )
