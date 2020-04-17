@@ -4,6 +4,7 @@ export interface TaskResource {
 }
 
 export interface Task {
+  _id?: string;
   name: string;
   requirements: TaskResource[];
 }

@@ -23,8 +23,12 @@ tr.task-row:not(.expanded-requirement):active {
   display: flex;
 }
 
+.delete-task-button {
+  float: right;
+}
+
 .expandedTaskInfo {
-  min-width: 80px;
+  min-width: 90%;
   border: 2px solid black;
   padding: 8px;
   font-weight: lighter;

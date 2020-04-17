@@ -13,9 +13,9 @@ import { MatTableModule } from '@angular/material';
 
 const appRoutes: Routes = [
   { path: 'create-task', component: TaskEntryComponent },
-  { path: 'view-tasks', component: ViewTasksComponent },
+  { path: 'xview-tasks', component: ViewTasksComponent },
   { path: 'settings', component: SettingsComponent },
-  { path: 'xview-tasks', component: TaskTableComponent},
+  { path: 'view-tasks', component: TaskTableComponent},
   { path: '**', component: SettingsComponent },
 ];
 

@@ -12,6 +12,13 @@ export class TaskListService {
   private taskList: Task[] = []
   constructor( private httpClient: HttpClient) { }
 
+  removeFromTaskList(t)
+  {
+    //this.taskList.push(t);
+    //this.httpClient.get("http://10.88.0.102:8000").subscribe();
+    return this.httpClient.delete<any>("http://10.88.0.101/submitdata?oid="+t._id.$oid, {observe: "response"});
+  }
+
   addToTaskList(t)
   {
     //this.taskList.push(t);

@@ -1,9 +1,15 @@
+<a [routerLink]="['/create-task']">
+<h1> Create new tasks </h1>
+</a>
 <table mat-table
        [dataSource]="taskArray" multiTemplateDataRows
        class="mat-elevation-z8">
   <ng-container matColumnDef=name>
-    <th mat-header-cell *matHeaderCellDef> Name </th>
-    <td mat-cell *matCellDef="let task"> {{task.name}} </td>
+    <th mat-header-cell *matHeaderCellDef> Tasks </th>
+    <td mat-cell *matCellDef="let task">
+      <div (click)="handleTaskClick(task)" style="display: inline">{{task.name}}</div>
+      <button mat-button (click)="handleDeleteTaskClick(task)" class="delete-task-button">Delete</button>
+    </td>
   </ng-container>
 
   <!-- Expanded Content Column - The detail row is made up of this one column that spans across all columns -->
@@ -11,8 +17,10 @@
     <th mat-header-cell *matHeaderCellDef></th>
     <td mat-cell *matCellDef="let task" [attr.colspan]="columnsToDisplay.length">
       <div class="task-requirements"
-        [@detailExpand]="task == expandedTask ? 'expanded' : 'collapsed'">
+        [@detailExpand]="expandedTask.includes(task) ? 'expanded' : 'collapsed'">
         <div class="expandedTaskInfo">
+          Requirements:
+          <!--{{task._id.$oid}}<br>-->
           <ng-container *ngFor="let req of task.requirements">
             {{req.quantity}}:{{req.name}}<br>
           </ng-container>
@@ -24,8 +32,7 @@
   <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
   <tr mat-row *matRowDef="let task; columns: columnsToDisplay;"
     class="task-row"
-    [class.expanded-requirements]="expandedTask === task"
-    (click)="expandedTask = expandedTask === task ? null : task">
+    [class.expanded-requirements]="expandedTask.includes(task)">
   </tr>
   <tr mat-row *matRowDef="let row; columns: ['requirements']" class="expanded-requirement-row"></tr>
 </table>

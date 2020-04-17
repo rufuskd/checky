@@ -21,13 +21,40 @@ import { Task, TaskResource } from '../classes/task';
 export class TaskTableComponent {
   taskArray = [];
   columnsToDisplay = ['name'];
-  expandedTask: Task | null;
+  expandedTask: Task[] = [];
 
   constructor( private taskListService: TaskListService )
   {
     this.taskListService.getTasks().subscribe(
-      (data) => { this.taskArray = data.body },
+      (data) => { this.taskArray = data.body; console.warn(data) },
       (error) => console.warn("Failed to populate task table")
     );
+  }
+
+  handleDeleteTaskClick(t: Task)
+  {
+    console.warn("Tried to delete");
+    this.taskListService.removeFromTaskList(t).subscribe(
+      (data) => { console.warn(data) },
+      (error) => console.warn("Failed to delete shit")
+    );
+  }
+
+  handleExpandedItemClick()
+  {
+    console.warn("ASSY THE BUTT DOG!");
+  }
+
+  handleTaskClick(t: Task)
+  {
+
+    let killindex = this.expandedTask.indexOf(t, 0);
+    if(killindex > -1){
+      this.expandedTask.splice(killindex,1);
+    }
+    else
+    {
+      this.expandedTask.push(t);
+    }
   }
 }
