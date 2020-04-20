@@ -34,10 +34,15 @@ export class TaskTableComponent {
   handleDeleteTaskClick(t: Task)
   {
     console.warn("Tried to delete");
+    let killindex = this.taskArray.indexOf(t, 0);
+    if(killindex > -1){
+      this.taskArray.splice(killindex,1);
+    }
     this.taskListService.removeFromTaskList(t).subscribe(
       (data) => { console.warn(data) },
       (error) => console.warn("Failed to delete shit")
     );
+    
   }
 
   handleExpandedItemClick()
@@ -47,7 +52,6 @@ export class TaskTableComponent {
 
   handleTaskClick(t: Task)
   {
-
     let killindex = this.expandedTask.indexOf(t, 0);
     if(killindex > -1){
       this.expandedTask.splice(killindex,1);

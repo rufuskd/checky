@@ -9,31 +9,20 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 //to connecting to a wsgi to pass in JSON
 export class TaskListService {
 
-  private taskList: Task[] = []
   constructor( private httpClient: HttpClient) { }
 
   removeFromTaskList(t)
   {
-    //this.taskList.push(t);
-    //this.httpClient.get("http://10.88.0.102:8000").subscribe();
-    return this.httpClient.delete<any>("http://10.88.0.101/submitdata?oid="+t._id.$oid, {observe: "response"});
+    return this.httpClient.delete<any>("http://10.88.0.101/submitdata?oid="+t._id.$oid);
   }
 
   addToTaskList(t)
   {
-    //this.taskList.push(t);
-    //this.httpClient.get("http://10.88.0.102:8000").subscribe();
     return this.httpClient.post<any>("http://10.88.0.101/submitdata", JSON.stringify(t));
   }
 
   getTasks()
   {
     return this.httpClient.get<any>("http://10.88.0.101/submitdata", {observe: "response"});
-    //return this.taskList;
-  }
-
-  clearTaskList()
-  {
-    this.taskList.length = 0;
   }
 }
