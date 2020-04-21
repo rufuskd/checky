@@ -1,5 +1,6 @@
-import {Component} from '@angular/core';
-import {animate, state, style, transition, trigger} from '@angular/animations';
+import { Component, ViewChild } from '@angular/core';
+import { MatTable } from '@angular/material';
+import { animate, state, style, transition, trigger } from '@angular/animations';
 import { TaskListService } from '../tasklist/tasklist.service';
 import { Task, TaskResource } from '../classes/task';
 
@@ -19,6 +20,7 @@ import { Task, TaskResource } from '../classes/task';
   ],
 })
 export class TaskTableComponent {
+  @ViewChild(MatTable, {static: false}) table: MatTable<any>;
   taskArray = [];
   columnsToDisplay = ['name'];
   expandedTask: Task[] = [];
@@ -42,7 +44,7 @@ export class TaskTableComponent {
       (data) => { console.warn(data) },
       (error) => console.warn("Failed to delete shit")
     );
-    
+    this.table.renderRows();
   }
 
   handleExpandedItemClick()
